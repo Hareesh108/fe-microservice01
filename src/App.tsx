@@ -1,15 +1,27 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
+import React from "react";
 
 function App() {
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const data = {
-      username: formData.get('username'),
-      password: formData.get('password')
+      username: formData.get("username"),
+      password: formData.get("password"),
     };
     console.log(data);
+
+    await fetch("/api/hello")
+      .then((res) => {
+        console.log(res);
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
