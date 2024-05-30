@@ -9,15 +9,24 @@ function App() {
       username: formData.get("username"),
       password: formData.get("password"),
     };
+
     console.log(data);
 
-    await fetch("/api/hello")
+    await fetch("/api/microservice01")
       .then((res) => {
         console.log(res);
+        console.log("microservice01");
         return res.json();
       })
-      .then((data) => {
-        console.log(data);
+      .catch((err) => {
+        console.log(err);
+      });
+
+    await fetch("/api/microservice02")
+      .then((res) => {
+        console.log(res);
+        console.log("microservice02");
+        return res.json();
       })
       .catch((err) => {
         console.log(err);
