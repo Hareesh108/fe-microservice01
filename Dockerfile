@@ -23,7 +23,6 @@ RUN npm run build
 # Use a specific version of the official Nginx image as the base image for the deployable image
 FROM nginxinc/nginx-unprivileged:1.24-bullseye-perl
 
-
 # Copy the built artifacts from the build stage to the Nginx HTML directory
 COPY --from=build /app/dist /usr/share/nginx/html
 
